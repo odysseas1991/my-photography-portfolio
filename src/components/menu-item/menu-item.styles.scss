@@ -1,12 +1,14 @@
 .menu-item {
-  min-width: 32%;
+  min-width: 25%;
   height: 240px;
   flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  border: 1px solid grey;
   margin: 0 7.5px 15px;
+  background-position: center;
+  background-size: cover;
 
   &:first-child {
     margin-right: 7.5px;
@@ -25,15 +27,15 @@
     justify-content: center;
 
     .title {
-      font-weight: bold;
       margin-bottom: 6px;
-      font-size: 20px;
-      //color: grey;
+      font-size: 19px;
+      color: white;
     }
 
     .subtitle {
       font-weight: lighter;
       font-size: 15px;
+      color: white;
     }
   }
 }
