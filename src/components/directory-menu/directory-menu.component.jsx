@@ -28,18 +28,6 @@ class Directory extends React.Component {
             'https://firebasestorage.googleapis.com/v0/b/crwn-db-52fb3.appspot.com/o/IMG_6572.jpg?alt=media&token=c0221ad7-6d3c-4a78-8d6f-3ef5caf8a9f2',
           id: 3,
         },
-        {
-          title: 'Lavrio refuges story',
-          imageUrl:
-            'https://firebasestorage.googleapis.com/v0/b/crwn-db-52fb3.appspot.com/o/IMG_6572.jpg?alt=media&token=c0221ad7-6d3c-4a78-8d6f-3ef5caf8a9f2',
-          id: 4,
-        },
-        {
-          title: 'Lavrio refuges story',
-          imageUrl:
-            'https://firebasestorage.googleapis.com/v0/b/crwn-db-52fb3.appspot.com/o/IMG_6572.jpg?alt=media&token=c0221ad7-6d3c-4a78-8d6f-3ef5caf8a9f2',
-          id: 5,
-        },
       ],
     };
   }
