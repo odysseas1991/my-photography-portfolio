@@ -1,0 +1,50 @@
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 30px;
+
+  .name {
+    font-size: 18px;
+  }
+
+  .options {
+    display: flex;
+
+    .option {
+      font-size: 19px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 25px;
+      text-decoration: none;
+      color: grey;
+
+      &:hover {
+        color: black;
+        font-weight: bolder;
+      }
+
+      .dd-projects-list {
+        background-color: white;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        z-index: 5;
+        margin-top: 5px;
+
+        .dd-projects-title {
+          font-size: 14px;
+          color: grey;
+          padding: 5px 0px;
+
+          &:hover {
+            color: black;
+            font-weight: bolder;
+          }
+        }
+      }
+    }
+  }
+}
