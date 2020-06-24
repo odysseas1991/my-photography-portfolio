@@ -6,7 +6,7 @@ import PROJECTS_DATA from '../../pages/projects.data';
 import './header.styles.scss';
 
 class Header extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
 
     this.state = {
@@ -23,6 +23,7 @@ class Header extends React.Component {
 
   render() {
     const { projects, listOpen } = this.state;
+    const { history, match } = this.props;
     return (
       <div className='header'>
         <div className='name'>
@@ -34,11 +35,24 @@ class Header extends React.Component {
           </Link>
           <div className='option'>
             <div className='dd-projects' onClick={() => this.toggleList()}>
-              <div className='dd-title'>Projects</div>
+              <div className='dd-title'>
+                Projects{' '}
+                <div className='dd-title-symbol'>
+                  {listOpen ? <div> -</div> : <div> +</div>}
+                </div>
+              </div>
               {listOpen && (
                 <ul className='dd-projects-list'>
                   {projects.map((item) => (
-                    <li className='dd-projects-title'>{item.title}</li>
+                    <li
+                      key={item.id}
+                      className='dd-projects-title'
+                      onClick={() =>
+                        history.push(`${match.url}${item.routeName}`)
+                      }
+                    >
+                      -{item.title}
+                    </li>
                   ))}
                 </ul>
               )}
