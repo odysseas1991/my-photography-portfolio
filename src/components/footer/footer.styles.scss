@@ -1,0 +1,34 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .social-icons {
+    display: flex;
+
+    .icon {
+      padding: 10px;
+      font-size: 20px;
+      transition: 0.3s;
+
+      a {
+        color: black;
+      }
+
+      &:hover {
+        transform: translate(0, -8px);
+        a {
+          color: grey;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    display: flex;
+    font-size: 11px;
+  }
+}

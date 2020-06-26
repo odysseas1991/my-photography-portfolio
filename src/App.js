@@ -6,6 +6,7 @@ import './App.css';
 import Header from './components/header/header.component';
 import HomePage from './pages/homepage/homepage.component';
 import AboutPage from './pages/about/about.component';
+import Footer from './components/footer/footer.component';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact path='/' component={HomePage} />
         <Route path='/about' component={AboutPage} />
       </Switch>
+      <Footer />
     </div>
   );
 }
