@@ -1,29 +1,25 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { toggleDropdownHidden } from '../../redux/dropdown/dropdown.actions';
 
 import PROJECTS_DATA from '../../pages/projects.data';
 
 import './header.styles.scss';
 
 class Header extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
 
     this.state = {
       projects: PROJECTS_DATA,
-      listOpen: false,
     };
   }
 
-  toggleList() {
-    this.setState((prevState) => ({
-      listOpen: !prevState.listOpen,
-    }));
-  }
-
   render() {
-    const { projects, listOpen } = this.state;
-    const { history, match } = this.props;
+    const { projects } = this.state;
+    const { history, match, toggleDropdownHidden, hidden } = this.props;
+
     return (
       <div className='header'>
         <div className='name'>
@@ -34,14 +30,14 @@ class Header extends React.Component {
             Home
           </Link>
           <div className='option'>
-            <div className='dd-projects' onClick={() => this.toggleList()}>
+            <div className='dd-projects' onClick={toggleDropdownHidden}>
               <div className='dd-title'>
                 Projects{' '}
                 <div className='dd-title-symbol'>
-                  {listOpen ? <div> -</div> : <div> +</div>}
+                  {!hidden ? <div> -</div> : <div> +</div>}
                 </div>
               </div>
-              {listOpen && (
+              {!hidden && (
                 <ul className='dd-projects-list'>
                   {projects.map((item) => (
                     <li
@@ -70,4 +66,16 @@ class Header extends React.Component {
   }
 }
 
-export default withRouter(Header);
+const mapStateToProps = (state) => ({
+  hidden: state.dropdown.hidden,
+});
+
+/*const mapStateToProps = ({ dropdown: { hidden } }) => ({
+  hidden,
+});
+*/
+const mapDispatchToProps = (dispatch) => ({
+  toggleDropdownHidden: () => dispatch(toggleDropdownHidden()),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
