@@ -7,6 +7,7 @@ npx create-create-app my-photography-portfolio
 1.  npm install node-sass
 2.  npm install react-router-dom
 3.  npm install redux redux-logger react-redux
+4.  npm install reselct
 
 ## To Do
 

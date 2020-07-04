@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toggleDropdownHidden } from '../../redux/dropdown/dropdown.actions';
+import { selectDropdownHidden } from '../../redux/dropdown/dropdown.selectors';
 
 import PROJECTS_DATA from '../../pages/projects.data';
 
@@ -67,7 +68,7 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  hidden: state.dropdown.hidden,
+  hidden: selectDropdownHidden(state),
 });
 
 /*const mapStateToProps = ({ dropdown: { hidden } }) => ({
