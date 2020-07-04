@@ -9,18 +9,20 @@ import AboutPage from './pages/about/about.component';
 import Footer from './components/footer/footer.component';
 import ContactPage from './pages/contact/contact.component';
 
-function App() {
-  return (
-    <div>
-      <Header />
-      <Switch>
-        <Route exact path='/' component={HomePage} />
-        <Route path='/about' component={AboutPage} />
-        <Route path='/contact' component={ContactPage} />
-      </Switch>
-      <Footer />
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Header />
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+          <Route path='/about' component={AboutPage} />
+          <Route path='/contact' component={ContactPage} />
+        </Switch>
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;
