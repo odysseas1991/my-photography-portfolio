@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './App.css';
 
@@ -14,15 +15,18 @@ import {
   convertCollectionsSnapshotToMap,
 } from '../src/firebase/firebase.utils';
 
+import { updateProjects } from '../src/redux/projects/projects.actions';
+
 class App extends React.Component {
-  unsubsscribeFromSnapshot = null;
+  unsubscribeFromSnapshot = null;
 
   componentDidMount() {
+    const { updateProjects } = this.props;
     const collectionRef = firestore.collection('projects');
 
     collectionRef.onSnapshot(async (snapshot) => {
       const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-      console.log(collectionsMap);
+      updateProjects(collectionsMap);
     });
   }
 
@@ -41,4 +45,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  updateProjects: (projectsMap) => dispatch(updateProjects(projectsMap)),
+});
+
+export default connect(null, mapDispatchToProps)(App);
