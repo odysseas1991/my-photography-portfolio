@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
-  projects: [
-    {
+  projects: {
+    streetStories: {
       id: 1,
       title: 'Street Stories',
       imageUrl:
@@ -30,7 +30,7 @@ const INITIAL_STATE = {
         },
       ],
     },
-    {
+    coronavirusEra: {
       id: 2,
       title: 'Coronavirus Era',
       imageUrl:
@@ -53,7 +53,7 @@ const INITIAL_STATE = {
         },
       ],
     },
-    {
+    lavrioRefugesStory: {
       id: 3,
       title: 'Lavrio refuges story',
       imageUrl:
@@ -76,7 +76,7 @@ const INITIAL_STATE = {
         },
       ],
     },
-  ],
+  },
 };
 
 const directoryReducer = (state = INITIAL_STATE, action) => {
