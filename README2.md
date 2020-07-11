@@ -9,6 +9,7 @@ npx create-create-app my-photography-portfolio
 3.  npm install redux redux-logger react-redux
 4.  npm install reselect
 5.  npm install firebase
+6.  npm install styled-components
 
 ## To Do
 

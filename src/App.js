@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './App.css';
@@ -9,6 +9,7 @@ import HomePage from './pages/homepage/homepage.component';
 import AboutPage from './pages/about/about.component';
 import Footer from './components/footer/footer.component';
 import ContactPage from './pages/contact/contact.component';
+import WithSpinner from './components/with-spinner/with-spinner.component';
 
 import {
   firestore,
@@ -17,7 +18,13 @@ import {
 
 import { updateProjects } from '../src/redux/projects/projects.actions';
 
+const HomePageWithSpinner = WithSpinner(HomePage);
+
 class App extends React.Component {
+  state = {
+    loading: true,
+  };
+
   unsubscribeFromSnapshot = null;
 
   componentDidMount() {
@@ -27,15 +34,25 @@ class App extends React.Component {
     collectionRef.onSnapshot(async (snapshot) => {
       const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
       updateProjects(collectionsMap);
+      this.setState({ loading: false });
     });
   }
 
   render() {
+    const { match } = this.props;
+    const { loading } = this.state;
+    console.log(match);
     return (
       <div>
         <Header />
         <Switch>
-          <Route exact path='/' component={HomePage} />
+          <Route
+            exact
+            path='/'
+            render={(props) => (
+              <HomePageWithSpinner isLoading={loading} {...props} />
+            )}
+          />
           <Route path='/about' component={AboutPage} />
           <Route path='/contact' component={ContactPage} />
         </Switch>
@@ -49,4 +66,4 @@ const mapDispatchToProps = (dispatch) => ({
   updateProjects: (projectsMap) => dispatch(updateProjects(projectsMap)),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default withRouter(connect(null, mapDispatchToProps)(App));
