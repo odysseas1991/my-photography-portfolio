@@ -4,7 +4,7 @@ const PROJECTS_DATA = [
     title: 'Street Stories',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/crwn-db-52fb3.appspot.com/o/IMG_5499.jpg?alt=media&token=2004d274-5b36-497d-9fc1-d9564e591e2c',
-    routeName: 'projects/street-stories',
+    routeName: 'projects/streetstories',
     images: [
       {
         id: 1,
@@ -34,7 +34,7 @@ const PROJECTS_DATA = [
     title: 'Coronavirus Era',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/crwn-db-52fb3.appspot.com/o/IMG_8165.jpg?alt=media&token=68e1ccaf-2e46-409f-8470-4713975024b2',
-    routeName: 'projects/coronavirus-era',
+    routeName: 'projects/coronavirusera',
     images: [
       {
         id: 1,
@@ -57,7 +57,7 @@ const PROJECTS_DATA = [
     title: 'Lavrio refuges story',
     imageUrl:
       'https://firebasestorage.googleapis.com/v0/b/crwn-db-52fb3.appspot.com/o/IMG_6572.jpg?alt=media&token=de70f653-7ddd-4e76-bf13-1122e233d2a2',
-    routeName: 'projects/lavrio-refuges-story',
+    routeName: 'projects/lavriorefugesstory',
     images: [
       {
         id: 1,

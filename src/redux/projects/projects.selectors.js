@@ -15,18 +15,7 @@ export const selectProjectsForPreview = createSelector(
       : []
 );
 
-/*export const selectProjectItem = (project) =>
-  createSelector(
-    [selectProjects],
-    (projectsCollection) => projectsCollection[project]
+export const selectProjectByUrl = (projectUrlParam) =>
+  createSelector([selectProjects], (projects) =>
+    projects ? projects[projectUrlParam] : null
   );
-*/
-
-/*export const selectProjects = createSelector(
-  [selectProject],
-  (projectsCollection) =>
-    projectsCollection
-      ? Object.keys(projectsCollection).map((key) => projectsCollection[key])
-      : []
-);
-*/

@@ -19,3 +19,4 @@ npx create-create-app my-photography-portfolio
 4.  About page.
 5.  Contact page.
 6.  Dispatch Action Shorthand(toggle dropdown hidden when click on other link(lesson 125))
+7.  mapstatetoprops get projects title for Header component
