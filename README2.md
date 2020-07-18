@@ -10,6 +10,7 @@ npx create-create-app my-photography-portfolio
 4.  npm install reselect
 5.  npm install firebase
 6.  npm install styled-components
+7.  npm install redux-thunk
 
 ## To Do
 

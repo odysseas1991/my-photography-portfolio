@@ -19,3 +19,8 @@ export const selectProjectByUrl = (projectUrlParam) =>
   createSelector([selectProjects], (projects) =>
     projects ? projects[projectUrlParam] : null
   );
+
+export const selectProjectFetching = createSelector(
+  [selectProject],
+  (project) => project.isFetching
+);

@@ -9,7 +9,6 @@ import MenuItem from '../menu-item/menu-item.component';
 import './directory-menu.styles.scss';
 
 const Directory = ({ projects }) => {
-  console.log(projects);
   return (
     <div className='directory-menu'>
       {projects.map(({ id, ...otherProps }) => (

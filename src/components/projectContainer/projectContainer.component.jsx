@@ -1,14 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import ProjectPreview from '../projectPreview/projectPreview.component';
+
 import { selectProjectByUrl } from '../../redux/projects/projects.selectors';
 
-const ProjectContainer = ({ match, project }) => {
-  //const { routeNane } = project;
-  //console.log(routeNane);
-  console.log(match.params.projectId);
-  console.log(project);
-  return <div className='projetcs-overview'>Specific project page</div>;
+const ProjectContainer = ({ project }) => {
+  console.log('Project: ', project);
+  const { title, images } = project || {};
+  return (
+    <div className='projects-overview'>
+      <ProjectPreview title={title} images={images} />
+    </div>
+  );
 };
 
 const mapStateToProps = (state, ownProps) => ({

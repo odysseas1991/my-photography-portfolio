@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 
 import './App.css';
@@ -12,38 +13,21 @@ import ContactPage from './pages/contact/contact.component';
 import ProjectsPage from './pages/projectspage/projectspage.component';
 import WithSpinner from './components/with-spinner/with-spinner.component';
 
-import {
-  firestore,
-  convertCollectionsSnapshotToMap,
-} from '../src/firebase/firebase.utils';
-
-import { updateProjects } from '../src/redux/projects/projects.actions';
+import { fetchProjectsStartAsync } from '../src/redux/projects/projects.actions';
+import { selectProjectFetching } from '../src/redux/projects/projects.selectors';
 
 const HomePageWithSpinner = WithSpinner(HomePage);
-//const ProjectsPageWithSpinner = WithSpinner(ProjectsPage);
+const ProjectsPageWithSpinner = WithSpinner(ProjectsPage);
 
 class App extends React.Component {
-  state = {
-    loading: true,
-  };
-
-  unsubscribeFromSnapshot = null;
-
   componentDidMount() {
-    const { updateProjects } = this.props;
-    const collectionRef = firestore.collection('projects');
-
-    collectionRef.onSnapshot(async (snapshot) => {
-      const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-      updateProjects(collectionsMap);
-      this.setState({ loading: false });
-    });
+    const { fetchProjectsStartAsync } = this.props;
+    fetchProjectsStartAsync();
   }
 
   render() {
-    const { match } = this.props;
-    const { loading } = this.state;
-    console.log(match);
+    const { isProjectsFetching } = this.props;
+
     return (
       <div>
         <Header />
@@ -52,7 +36,17 @@ class App extends React.Component {
             exact
             path='/'
             render={(props) => (
-              <HomePageWithSpinner isLoading={loading} {...props} />
+              <HomePageWithSpinner isLoading={isProjectsFetching} {...props} />
+            )}
+          />
+          <Route
+            exact
+            path='/'
+            render={(props) => (
+              <ProjectsPageWithSpinner
+                isLoading={isProjectsFetching}
+                {...props}
+              />
             )}
           />
           <Route path='/projects' component={ProjectsPage} />
@@ -65,8 +59,12 @@ class App extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  updateProjects: (projectsMap) => dispatch(updateProjects(projectsMap)),
+const mapStateToProps = createStructuredSelector({
+  isProjectsFetching: selectProjectFetching,
 });
 
-export default connect(null, mapDispatchToProps)(App);
+const mapDispatchToProps = (dispatch) => ({
+  fetchProjectsStartAsync: () => dispatch(fetchProjectsStartAsync()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
